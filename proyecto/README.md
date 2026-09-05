@@ -1,17 +1,19 @@
-﻿# Proyecto Principal - Inteligencia Artificial 🚀
+﻿# Proyecto Principal de Inteligencia Artificial 🚀
 
-Espacio para el desarrollo del proyecto de IA propuesto para el curso.
-
----
-
-## 📌 Descripción del Proyecto
-*(Aquí iremos definiendo el tema, objetivo y tipo de IA a construir según las guías del profesor y tu elección).*
+Carpeta reservada para el desarrollo del proyecto final de la asignatura de Inteligencia Artificial (COTECNOVA).
 
 ---
 
-## 📂 Estructura del Proyecto
+## 📌 Estado Actual
+- **Fase:** Esperando aprobación/aval del profesor sobre la propuesta temática elegida:
+  1. *Cotizador y Tasador Inteligente de Bordados Tradicionales de Cartago (Machine Learning / Regresión)*.
+  2. *Árbitro Inteligente de Quejas y Peticiones (PQRS) para EMCARTAGO (NLP + Sistema Experto)*.
 
-- `src/`: Código fuente principal (modelos, preprocesamiento, inferencia).
-- `data/`: Conjunto de datos o muestras (archivos pesados ignorados por git).
-- `notebooks/`: Cuadernos de experimentación y análisis exploratorio (Jupyter).
-- `docs/`: Documentación, guías y entregables del profesor.
+---
+
+## 📂 Estructura Planificada para el Proyecto
+Una vez el docente avale la propuesta, aquí se estructurará:
+- `data/`: Dataset del proyecto (CSV / JSON con registros reales o simulados).
+- `src/`: Código fuente del preprocesamiento, entrenamiento del modelo de IA y lógica de inferencia.
+- `notebooks/`: Cuadernos de análisis exploratorio de datos (EDA) y experimentación.
+- `informe_proyecto.md`: Documento de avance y sustentación del proyecto.
