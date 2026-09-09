@@ -52,10 +52,11 @@ venv.bak/
 *.h5
 *.pkl
 *.parquet
-*.csv
 *.zip
 *.tar.gz
-!data/sample_*.csv
+
+# Excepciones para que se suban los CSV del curso
+!*.csv
 
 # OS specific files
 .DS_Store

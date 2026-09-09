@@ -1,0 +1,11 @@
+cultivo,hectareas,produccion_toneladas,region,tipo_suelo
+Café,5,3.2,Centro,Franco
+Caña,10,8.5,Norte,Arcilloso
+Maíz,3,1.8,Sur,Franco
+Frijol,4,2.1,Centro,Arcilloso
+Arroz,6,4.0,Norte,Franco
+Cacao,8,3.5,Sur,Franco
+Palma,12,7.2,Centro,Arcilloso
+Yuca,2,1.5,Norte,Franco
+Plátano,7,5.0,Sur,Arcilloso
+Tomate,1,0.8,Centro,Franco
