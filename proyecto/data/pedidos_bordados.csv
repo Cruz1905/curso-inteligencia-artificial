@@ -1,0 +1,21 @@
+﻿id_pedido,prenda,tecnica,tela,area_cm2,complejidad,madejas_hilo,horas_trabajo,precio_cop
+1,Guayabera,Calado Fino,Lino,450,Alta,5,48.0,360000
+2,Guayabera,Punto de Sombra,Lino,380,Media,4,30.0,240000
+3,Blusa,Rococo,Algodon,220,Alta,4,24.5,185000
+4,Blusa,Pata de Cabra,Algodon,180,Baja,2,12.0,110000
+5,Mantel,Calado Fino,Lino,1200,Muy Alta,14,115.0,850000
+6,Mantel,Punto de Cruz,Algodon,950,Media,8,55.0,420000
+7,Vestido,Calado Fino,Seda,520,Muy Alta,7,62.0,490000
+8,Tapete,Rococo,Lino,300,Media,3,22.0,170000
+9,Camisa,Punto de Cruz,Lino,260,Baja,2,16.5,135000
+10,Servilletas Set,Calado Fino,Lino,400,Alta,4,36.0,260000
+11,Guayabera,Rococo,Lino,350,Media,4,28.0,220000
+12,Blusa,Punto de Sombra,Seda,280,Alta,3,27.5,210000
+13,Panuelo,Calado Fino,Lino,80,Alta,1,9.5,85000
+14,Vestido,Punto de Sombra,Lino,600,Alta,6,45.0,350000
+15,Guayabera,Calado Fino,Lino,420,Alta,5,44.0,330000
+16,Blusa,Calado Fino,Algodon,200,Media,3,20.0,150000
+17,Tapete,Punto de Cruz,Algodon,350,Baja,3,18.0,130000
+18,Mantel,Rococo,Lino,800,Alta,9,68.0,520000
+19,Guayabera,Pata de Cabra,Algodon,300,Baja,3,15.0,125000
+20,Vestido,Rococo,Seda,450,Muy Alta,6,50.0,410000
