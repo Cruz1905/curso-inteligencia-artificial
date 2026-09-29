@@ -26,3 +26,14 @@ Repositorio organizado para las actividades prácticas, talleres y laboratorios 
   - `hectareas_vs_produccion.png`: Gráfico de dispersión.
   - `distribucion_produccion.png`: Histograma de frecuencias de producción.
 - **Temas:** Arrays de NumPy, operaciones vectorizadas, estadísticas descriptivas (media, mediana, desviación estándar, min/max) y visualizaciones con Matplotlib.
+
+### 🔹 [Clase 08 - Pandas, Seaborn y Preparación de Datos para ML](./clase_08/)
+- **Archivos:**
+  - `ventas_tienda.csv`: Dataset de ventas con valores nulos intencionales.
+  - `preparacion_datos.py`: Script con Pandas (imputación de nulos con mediana, columna derivada `total_venta`), Seaborn (gráficos estadísticos) y One-Hot Encoding con `pd.get_dummies()`.
+  - `ventas_preparadas_ml.csv`: Dataset limpio y codificado listo para Machine Learning.
+  - `distribucion_ventas.png`: Histograma con estimación de densidad KDE.
+  - `ventas_por_categoria.png`: Gráfico de barras con acumulado de ventas.
+  - `edad_vs_venta.png`: Gráfico de dispersión multivariable (edad vs venta con categoría y método de pago).
+  - `interpretacion_resultados.md`: Respuestas detalladas a las preguntas de análisis del profesor.
+- **Temas:** Manipulación de DataFrames y Series, imputación de datos faltantes, visualización estadística avanzada con Seaborn y preparación de matrices para modelos de ML.

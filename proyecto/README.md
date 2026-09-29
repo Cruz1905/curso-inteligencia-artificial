@@ -4,6 +4,7 @@
 **Docente:** Jhon James Cano Sánchez  
 **Integrantes:** Davison Cruz & Juan Diego Zapata  
 **Fecha de Avance (Corte 1):** 21 de septiembre de 2026  
+**Actualización (Clase 8 - Preparación ML):** 28 de septiembre de 2026  
 
 ---
 
@@ -31,12 +32,18 @@ Se construyó y estructuró el dataset `pedidos_bordados.csv` a partir del muest
 
 ---
 
-## 2. Estructura de Datos y Código en Python
+## 2. Preparación de Datos con Pandas y Seaborn (Clase 8)
 
-El script principal se encuentra en [`src/eda_proyecto.py`](./src/eda_proyecto.py).
-- **Carga de datos:** Uso de `csv.DictReader` para mapear los registros a listas de diccionarios tipados.
-- **Función propia implementada:** `calcular_rendimiento(area, horas)`, la cual calcula la tasa de $cm^2$ bordados por cada hora efectiva de labor manual.
-- **Matriz NumPy:** Conversión de las columnas numéricas (`area_cm2`, `madejas_hilo`, `horas_trabajo`, `precio_cop`) para cómputo vectorial de alta velocidad.
+En cumplimiento de la actividad complementaria de la **Clase 8**:
+- **Exploración con Pandas:** Carga del dataset mediante `pd.read_csv()`, verificación de tipos con `df.info()`, estadísticas descriptivas con `df.describe()` y comprobación de nulos con `df.isnull().sum()` (0 valores nulos detectados).
+- **Columnas Derivadas Creadas:**
+  - `costo_por_cm2 = precio_cop / area_cm2`: Mide el valor en pesos por centímetro cuadrado bordado.
+  - `productividad_cm2_hora = area_cm2 / horas_trabajo`: Cuantifica el avance de la artesana por hora según la técnica.
+- **Visualizaciones con Seaborn:**
+  1. `densidad_precios_seaborn.png`: Histograma con curva KDE que muestra la distribución bimodal de precios según si son prendas personales o manteles de gran formato.
+  2. `boxplot_horas_por_tecnica.png`: Diagrama de caja y bigotes que evidencia la alta dispersión y exigencia temporal del *Calado Fino* respecto a las demás técnicas.
+  3. `regresion_area_vs_horas.png`: Gráfico de dispersión con ajuste de regresión lineal directa que confirma la correlación positiva entre superficie y horas de labor.
+- **Codificación para Machine Learning:** Aplicación de **One-Hot Encoding** (`pd.get_dummies()`) sobre las variables `tecnica`, `tela` y `complejidad`, exportando el dataset final listo para modelado en `data/pedidos_bordados_preparados_ml.csv` (20 filas x 18 columnas numéricas).
 
 ---
 
@@ -51,22 +58,14 @@ Mediante funciones vectorizadas de NumPy (`np.mean`, `np.median`, `np.std`, `np.
 
 ---
 
-## 4. Visualizaciones con Matplotlib
-
-1. **Dispersión Área ($cm^2$) vs Horas de Trabajo:** Muestra una clara tendencia ascendente donde a mayor superficie bordada se incrementan las horas, pero con dispersión notable provocada por la técnica artesanal.
-2. **Barras de Horas por Técnica:** Evidencia la disparidad de esfuerzo: el *Calado Fino* lidera con más de 50 horas promedio por pieza, contrastando con el *Punto de Cruz* y la *Pata de Cabra*.
-3. **Distribución de Precios (Histograma):** La mayor concentración de pedidos oscila entre los $120.000 y $350.000 COP.
-
----
-
-## 5. Hallazgos Clave
+## 4. Hallazgos Clave
 
 1. **Impacto de la técnica sobre el tiempo:** La técnica artesanal influye más en las horas requeridas que el tamaño bruto de la prenda. Un calado fino de $400\text{ cm}^2$ toma el triple de tiempo que un bordado de cruz de igual tamaño, justificando un modelo predictivo multifactorial.
 2. **Asimetría en la fijación de precios tradicionales:** La desviación estándar de precios (\$181.490 COP) refleja la inconsistencia del cobro al tanteo en Cartago, ratificando la necesidad de un sistema objetivo de cotización.
 
 ---
 
-## 6. Próximos Pasos (Segundo Corte)
-- Normalización y codificación de variables categóricas (`OneHotEncoder`).
+## 5. Próximos Pasos (Segundo Corte)
+- División de datos en conjuntos de entrenamiento y prueba (`train_test_split`).
 - Entrenamiento de modelos de Machine Learning supervisado con `scikit-learn` (`LinearRegression`, `DecisionTreeRegressor`, `RandomForestRegressor`).
 - Comparación de métricas de precisión y error ($R^2$, MAE, RMSE).
