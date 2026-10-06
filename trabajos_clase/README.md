@@ -1,4 +1,4 @@
-﻿# Trabajos y Talleres en Clase 📚
+# Trabajos y Talleres en Clase 📚
 
 Repositorio organizado para las actividades prácticas, talleres y laboratorios del curso de Inteligencia Artificial (COTECNOVA).
 
@@ -27,7 +27,7 @@ Repositorio organizado para las actividades prácticas, talleres y laboratorios 
   - `distribucion_produccion.png`: Histograma de frecuencias de producción.
 - **Temas:** Arrays de NumPy, operaciones vectorizadas, estadísticas descriptivas (media, mediana, desviación estándar, min/max) y visualizaciones con Matplotlib.
 
-### 🔹 [Clase 08 - Pandas, Seaborn y Preparación de Datos para ML](./clase_08/)
+### 🔹 [Clase 07 - Pandas, Seaborn y Preparación de Datos para ML](./clase_07/)
 - **Archivos:**
   - `ventas_tienda.csv`: Dataset de ventas con valores nulos intencionales.
   - `preparacion_datos.py`: Script con Pandas (imputación de nulos con mediana, columna derivada `total_venta`), Seaborn (gráficos estadísticos) y One-Hot Encoding con `pd.get_dummies()`.
@@ -37,3 +37,12 @@ Repositorio organizado para las actividades prácticas, talleres y laboratorios 
   - `edad_vs_venta.png`: Gráfico de dispersión multivariable (edad vs venta con categoría y método de pago).
   - `interpretacion_resultados.md`: Respuestas detalladas a las preguntas de análisis del profesor.
 - **Temas:** Manipulación de DataFrames y Series, imputación de datos faltantes, visualización estadística avanzada con Seaborn y preparación de matrices para modelos de ML.
+
+### 🔹 [Clase 08 - ¿Cómo Aprende una IA? Pesos, Neuronas y Error](./clase_08/)
+- **Archivos:**
+  - `neurona_and.py`: Implementación desde cero en Python puro de un Perceptrón simple para aprender la compuerta AND, con registro del error por época y gráfica.
+  - `evolucion_error_and.png`: Curva de descenso del error total a lo largo de las épocas de entrenamiento para la compuerta AND.
+  - `neuronas_logicas.py`: Implementación del perceptrón para compuertas OR y NOT (1 entrada) con convergencia y visualización.
+  - `evolucion_error_or_not.png`: Gráficas comparativas de evolución del error para OR y NOT.
+  - `reflexion_aprendizaje_ia.md`: Análisis teórico riguroso sobre tasa de aprendizaje, necesidad del bias y demostración matemática/geométrica de la no separabilidad lineal de la compuerta XOR (Minsky & Papert, 1969).
+- **Temas:** Fundamentos de redes neuronales, suma ponderada, función de activación escalón, regla de aprendizaje de Rosenblatt, épocas, ajuste de pesos y bias, y separabilidad lineal.
