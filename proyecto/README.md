@@ -1,10 +1,10 @@
-﻿# Sistema Inteligente de Tasación y Estimación de Tiempos para Bordados Tradicionales de Cartago 🧵🤖
+# Sistema Inteligente de Tasación y Estimación de Tiempos para Bordados Tradicionales de Cartago 🧵🤖
 
-**Asignatura:** Inteligencia Artificial – COTECNOVA 2026  
+**Asignatura:** Inteligencia Artificial – COTECNOVA 2026-02  
 **Docente:** Jhon James Cano Sánchez  
 **Integrantes:** Davison Cruz & Juan Diego Zapata  
 **Fecha de Avance (Corte 1):** 21 de septiembre de 2026  
-**Actualización (Clase 8 - Preparación ML):** 28 de septiembre de 2026  
+**Fecha de Avance (Corte 2):** 25 de octubre de 2026  
 
 ---
 
@@ -32,13 +32,23 @@ Se construyó y estructuró el dataset `pedidos_bordados.csv` a partir del muest
 
 ---
 
-## 2. Preparación de Datos con Pandas y Seaborn (Clase 8)
+## 2. Preparación de Datos con Pandas y Seaborn (Clases 7 y 8)
 
-En cumplimiento de la actividad complementaria de la **Clase 8**:
-- **Exploración con Pandas:** Carga del dataset mediante `pd.read_csv()`, verificación de tipos con `df.info()`, estadísticas descriptivas con `df.describe()` y comprobación de nulos con `df.isnull().sum()` (0 valores nulos detectados).
+En cumplimiento de los requisitos de preparación y visualización:
+- **Exploración con Pandas:** Carga del dataset mediante `pd.read_csv()`, verificación de tipos con `df.info()`, estadísticas descriptivas y comprobación de nulos con `df.isnull().sum()` (0 valores nulos, 0 duplicados, rangos lógicos coherentes).
 - **Columnas Derivadas Creadas:**
   - `costo_por_cm2 = precio_cop / area_cm2`: Mide el valor en pesos por centímetro cuadrado bordado.
   - `productividad_cm2_hora = area_cm2 / horas_trabajo`: Cuantifica el avance de la artesana por hora según la técnica.
+- **Tabla "Antes / Después" de la Limpieza:**
+
+| Métrica | Antes (Crudo) | Después (Limpio) | Para ML (One-Hot) |
+| :--- | :---: | :---: | :---: |
+| **Número de Filas** | 20 | 20 | 20 |
+| **Número de Columnas** | 9 | 11 | 18 |
+| **Valores Nulos Totales** | 0 | 0 | 0 |
+| **Filas Duplicadas** | 0 | 0 | 0 |
+| **Variables Categóricas** | 3 (texto) | 3 (texto) | 0 (codificadas 1/0) |
+
 - **Visualizaciones con Seaborn:**
   1. `densidad_precios_seaborn.png`: Histograma con curva KDE que muestra la distribución bimodal de precios según si son prendas personales o manteles de gran formato.
   2. `boxplot_horas_por_tecnica.png`: Diagrama de caja y bigotes que evidencia la alta dispersión y exigencia temporal del *Calado Fino* respecto a las demás técnicas.
@@ -58,14 +68,87 @@ Mediante funciones vectorizadas de NumPy (`np.mean`, `np.median`, `np.std`, `np.
 
 ---
 
-## 4. Hallazgos Clave
+## 4. Avance 2: Primer Modelo de IA – Perceptrón con Sigmoide desde Cero (Clases 8 y 9)
 
-1. **Impacto de la técnica sobre el tiempo:** La técnica artesanal influye más en las horas requeridas que el tamaño bruto de la prenda. Un calado fino de $400\text{ cm}^2$ toma el triple de tiempo que un bordado de cruz de igual tamaño, justificando un modelo predictivo multifactorial.
-2. **Asimetría en la fijación de precios tradicionales:** La desviación estándar de precios (\$181.490 COP) refleja la inconsistencia del cobro al tanteo en Cartago, ratificando la necesidad de un sistema objetivo de cotización.
+Como hito fundamental del Segundo Corte, se implementó en `src/perceptron_proyecto.py` una neurona artificial simple unicapa entrenada mediante **descenso del gradiente en lote** sin librerías de alto nivel (utilizando exclusivamente **NumPy puro**).
+
+### Formulación Matemática del Modelo:
+1. **Variable Objetivo ($y \in \{0, 1\}$):** Clasificación binaria de dedicación horaria (`alta_dedicacion`), donde $y = 1$ si las horas de confección son mayores o iguales a la mediana ($29.0\text{ h}$), y $y = 0$ si son menores. Esta elección garantiza un balance perfecto de clases (10 pedidos en cada clase). Ni `horas_trabajo` ni `precio_cop` se usan como entradas para evitar fuga de información (*data leakage*).
+2. **Variables de Entrada Escaladas ($X_{\text{std}}$):** Superficie del bordado (`area_cm2`) y consumo de hilo (`madejas_hilo`), transformadas mediante estandarización $Z$-score ($z = \frac{x - \mu}{\sigma}$).
+3. **Función de Activación:** Sigmoide $\sigma(z) = \frac{1}{1 + e^{-z}}$.
+4. **Función de Pérdida:** Pérdida Logarítmica (*Binary Cross-Entropy*):
+   $$L = -\frac{1}{N} \sum_{i=1}^N \left[ y^{(i)} \log(\hat{y}^{(i)}) + (1 - y^{(i)}) \log(1 - \hat{y}^{(i)}) \right]$$
+5. **Gradientes Analíticos:**
+   $$\frac{\partial L}{\partial w_j} = \frac{1}{N} \sum_{i=1}^N (\hat{y}^{(i)} - y^{(i)}) x_j^{(i)}, \quad \frac{\partial L}{\partial b} = \frac{1}{N} \sum_{i=1}^N (\hat{y}^{(i)} - y^{(i)})$$
+
+### Resultados Cuantitativos del Entrenamiento:
+- **Pérdida inicial:** $0.6931$ (azar teórico con clases balanceadas $-\ln(0.5)$).
+- **Pérdida final:** $0.1361$ (reducción progresiva de $0.5571$).
+- **Exactitud final (Accuracy):** **$100.0\%$** ($20/20$ aciertos en la clasificación de la mediana).
+- **Parámetros finales aprendidos:**
+  - $w_1 (\text{Área}) = +3.5566$
+  - $w_2 (\text{Madejas}) = +3.4419$
+  - $b (\text{Sesgo}) = +1.7104$
+
+### Interpretación en el Contexto del Proyecto:
+- **Signo de los pesos ($w_1 > 0, w_2 > 0$):** Demuestra que tanto el incremento de área bordada como la cantidad de madejas aumentan monotónicamente la probabilidad de que una prenda exija alta dedicación temporal ($\ge 29$ horas).
+- **Frontera de decisión y separabilidad lineal:** El gráfico `frontera_decision_perceptron.png` muestra una clara línea divisoria $w_1 x_1 + w_2 x_2 + b = 0$ que separa los encargos ligeros/medianos de las piezas de alta dedicación.
+- **Gráficos generados:** `curva_aprendizaje_perceptron.png` y `frontera_decision_perceptron.png`.
 
 ---
 
-## 5. Próximos Pasos (Segundo Corte)
-- División de datos en conjuntos de entrenamiento y prueba (`train_test_split`).
-- Entrenamiento de modelos de Machine Learning supervisado con `scikit-learn` (`LinearRegression`, `DecisionTreeRegressor`, `RandomForestRegressor`).
-- Comparación de métricas de precisión y error ($R^2$, MAE, RMSE).
+## 5. Instrucciones de Ejecución con Docker 🐳
+
+Todo el entorno de ejecución está completamente contenerizado para garantizar reproducibilidad en cualquier sistema operativo.
+
+### Paso 1: Iniciar el contenedor de desarrollo
+Desde la raíz del repositorio, levantar el servicio con Docker Compose:
+```bash
+docker compose up -d
+```
+
+### Paso 2: Acceder a la terminal del contenedor
+Ingresar a la sesión interactiva de Bash:
+```bash
+docker exec -it ia_python bash
+```
+El prompt de la terminal mostrará la ruta de trabajo:
+```text
+root@...:/app#
+```
+
+### Paso 3: Ejecutar los scripts del proyecto
+Navegar a la carpeta de código fuente del proyecto y ejecutar los programas:
+```bash
+cd /app/proyecto/src
+
+# 1. Ejecutar análisis exploratorio (EDA):
+python eda_proyecto.py
+
+# 2. Ejecutar limpieza y preparación de datos:
+python preparacion_datos_proyecto.py
+
+# 3. Ejecutar el modelo perceptrón desde cero:
+python perceptron_proyecto.py
+```
+
+---
+
+## 6. Plan hacia el Proyecto Final (Tercer Corte)
+
+- **Tipo de problema final:** **REGRESIÓN** multivariable (estimación precisa y continua de `horas_trabajo` y `precio_cop` en pesos colombianos).
+- **Modelos de Scikit-Learn a comparar (Clase 12 - 9 de noviembre):**
+  1. *Regresión Lineal Múltiple* (Línea base).
+  2. *Árboles de Decisión para Regresión* (`DecisionTreeRegressor`).
+  3. *Bosques Aleatorios* (`RandomForestRegressor`).
+  4. *Gradient Boosting* (`GradientBoostingRegressor`).
+- **Métricas de Selección:**
+  - $R^2$ (*Coeficiente de determinación*): Proporción de la varianza explicada (se buscará $R^2 > 0.85$).
+  - $\text{MAE}$ (*Mean Absolute Error*): Error absoluto medio expresado directamente en horas y en pesos COP para fácil interpretación comercial por las bordadoras.
+  - $\text{RMSE}$ (*Root Mean Squared Error*): Penalización de errores grandes en piezas de alto costo.
+- **Demostración Final:** Módulo interactivo de inferencia que reciba un pedido nuevo (ej. Guayabera de 450 cm² en lino con calado fino) y retorne la cotización y calendario sugerido.
+- **Cronograma de Trabajo:**
+  - *26 de octubre - 8 de noviembre:* Implementación y ajuste de modelos con Scikit-Learn.
+  - *9 de noviembre (Clase 12):* Validación cruzada y comparación sistemática de algoritmos.
+  - *10 de noviembre - 22 de noviembre:* Desarrollo de la interfaz demostrativa e informe final en normas APA.
+  - *23 / 30 de noviembre:* Sustentación final del proyecto.
