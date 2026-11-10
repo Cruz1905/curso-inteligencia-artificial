@@ -1,36 +1,38 @@
-﻿# Curso de Inteligencia Artificial 🤖
+# Curso de Inteligencia Artificial 🤖
+## Facultad de Ingeniería de Sistemas · COTECNOVA (2026-02)
+* **Docente:** Jhon James Cano Sánchez
+* **Estudiante:** Davison Cruz López
 
-Repositorio dedicado a las actividades, talleres y proyecto principal del curso de Inteligencia Artificial.
+Repositorio integral con las actividades prácticas de clase, talleres, exámenes parciales y el proyecto de aula en Inteligencia Artificial.
 
 ---
 
 ## 📁 Estructura del Repositorio
 
-- **[`proyecto/`](./proyecto/)**: Contiene el código fuente, documentación, modelos y pruebas del proyecto principal de Inteligencia Artificial desarrollado a lo largo del curso.
-- **[`trabajos_clase/`](./trabajos_clase/)**: Contiene las actividades, talleres, ejercicios y laboratorios realizados durante las clases.
+- **[`proyecto/`](./proyecto/)**: **Sistema Inteligente de Tasación y Estimación de Tiempos para Bordados Tradicionales de Cartago**. Incluye EDA, preparación de datos, perceptrón desde cero con NumPy (Avance 2) y los modelos finales de clasificación y regresión implementados con Scikit-Learn, Pipelines y serialización `joblib` (Clase 12 / Entrega Final).
+- **[`clase12/`](./clase12/)**: **Scikit-Learn: Entrenar, Evaluar y Guardar Modelos**. Comparación de modelos con Pipelines, métricas de clasificación y regresión, solución de la compuerta XOR con `MLPClassifier`, análisis empírico de sobreajuste y persistencia con `joblib`.
+- **[`parcial2/`](./parcial2/)**: **Segundo Parcial**. Limpieza y depuración con Pandas, visualizaciones con Seaborn, perceptrón desde cero con NumPy y reporte técnico del sector hotelero de Cartago.
+- **[`trabajos_clase/`](./trabajos_clase/)**: Talleres y laboratorios de clases anteriores (Clases 1 a 8: EDA con NumPy/Pandas, visualización con Seaborn y neuronas lógicas AND/OR/NOT).
 
 ---
 
 ## 🛠️ Requisitos e Instalación
 
-- **Python 3.10+**
-- Librerías comunes recomendadas:
-  - `numpy`, `pandas`, `matplotlib`, `scikit-learn`
-  - `torch` / `tensorflow` (cuando corresponda a Deep Learning)
+- **Python 3.12+**
+- Librerías principales: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `joblib`
 
----
-
-## 🚀 Uso y Entorno Virtual
-
-Para aislar las dependencias del proyecto, se recomienda crear un entorno virtual:
-
+### Entorno Local / Virtual
 ```bash
 # 1. Crear entorno virtual
 python -m venv .venv
 
 # 2. Activar entorno virtual en Windows PowerShell
 .venv\Scripts\Activate.ps1
+# O en bash/WSL: source .venv/bin/activate
 
-# 3. Instalar dependencias requeridas
+# 3. Instalar dependencias
 pip install -r requirements.txt
 ```
+
+### Entorno Docker
+Cada carpeta de entrega (`clase12`, `parcial2`) cuenta con su propio `Dockerfile` y `docker-compose.yml` para ejecución desacoplada y reproducible.

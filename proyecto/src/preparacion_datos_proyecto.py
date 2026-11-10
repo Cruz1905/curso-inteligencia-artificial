@@ -37,15 +37,11 @@ def main():
     print(f"\nConteo de valores nulos por columna:\n{nulos_iniciales}")
     print(f"Filas duplicadas detectadas: {duplicados_iniciales}")
 
-    # Verificación de integridad de dominio (rangos lógicos)
     print("\nVerificación de rangos y valores posibles:")
     print(f" - Rango de área (cm²): [{df_crudo['area_cm2'].min()} a {df_crudo['area_cm2'].max()}] -> Válido (> 0)")
     print(f" - Rango de horas: [{df_crudo['horas_trabajo'].min()} a {df_crudo['horas_trabajo'].max()}] -> Válido (> 0)")
     print(f" - Rango de precios (COP): [${df_crudo['precio_cop'].min():,.0f} a ${df_crudo['precio_cop'].max():,.0f}] -> Válido (> 0)")
 
-    # --------------------------------------------------------------------------
-    # 2. TRANSFORMACIÓN Y CREACIÓN DE VARIABLES DERIVADAS
-    # --------------------------------------------------------------------------
     print("\n--- 2. INGENIERÍA DE CARACTERÍSTICAS Y COLUMNAS DERIVADAS ---")
     df_limpio = df_crudo.copy()
 
@@ -57,9 +53,6 @@ def main():
     df_limpio.to_csv(ruta_limpio, index=False)
     print(f"[+] Dataset limpio con variables derivadas guardado en: {ruta_limpio}")
 
-    # --------------------------------------------------------------------------
-    # 3. TABLA COMPARATIVA "ANTES / DESPUÉS" (EXIGIDA EN GUÍA AVANCE 2)
-    # --------------------------------------------------------------------------
     df_ml = pd.get_dummies(df_limpio, columns=["tecnica", "tela", "complejidad"], prefix=["tec", "tela", "comp"])
     columnas_drop = ["id_pedido", "prenda"]
     df_ml = df_ml.drop(columns=columnas_drop, errors="ignore")
