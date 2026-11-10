@@ -1,0 +1,8 @@
+services:
+  ia_python:
+    build: .
+    container_name: ia_python
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
