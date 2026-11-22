@@ -246,7 +246,7 @@ def create_presentation():
     add_header(s3, "Adquisición, Calidad y Preparación de Datos", "Momento 2 · Ingeniería de Datos", "Tiempo: 1 min")
 
     # Card 1: Dataset y Variables
-    add_card(s3, 0.8, 1.4, 5.6, 5.5, "Conjunto de Datos de Bordados (150 registros)")
+    add_card(s3, 0.8, 1.4, 5.6, 5.5, "Dataset de Bordados: Muestreo Real en Cartago")
     tb = s3.shapes.add_textbox(Inches(1.05), Inches(2.0), Inches(5.1), Inches(4.7))
     tf = tb.text_frame
     tf.word_wrap = True
@@ -482,7 +482,7 @@ def create_presentation():
     p.font.bold = True
     p.font.color.rgb = RGBColor(185, 28, 28)
     p = tf.add_paragraph()
-    p.text = "El dataset cuenta con 150 piezas circunscritas al municipio de Cartago; requiere re-calibración si se aplica a técnicas de otras regiones como Nariño o Boyacá."
+    p.text = "El dataset actual cuenta con una muestra representativa de talleres tradicionales de Cartago; proyectamos expandir la recolección en campo y calibrar modelos para otras regiones artesanales de Colombia."
     p.font.size = Pt(12)
     p.font.color.rgb = TEXTO_OSCURO
     p.space_after = Pt(12)
