@@ -40,7 +40,7 @@ def create_presentation():
     BLANCO = RGBColor(255, 255, 255)
     VERDE_EXITO = RGBColor(22, 101, 52)
 
-    def add_header(slide, title_text, category_text, time_badge=""):
+    def add_header(slide, title_text, category_text):
         # Header banner background
         header_shape = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.333), Inches(1.1))
         header_shape.fill.solid()
@@ -54,7 +54,7 @@ def create_presentation():
         line.line.fill.background()
 
         # Category and Title text
-        txBox = slide.shapes.add_textbox(Inches(0.8), Inches(0.12), Inches(9.5), Inches(0.9))
+        txBox = slide.shapes.add_textbox(Inches(0.8), Inches(0.12), Inches(11.8), Inches(0.9))
         tf = txBox.text_frame
         tf.word_wrap = True
         tf.margin_top = tf.margin_bottom = tf.margin_left = tf.margin_right = 0
@@ -70,22 +70,6 @@ def create_presentation():
         p2.font.size = Pt(22)
         p2.font.bold = True
         p2.font.color.rgb = BLANCO
-
-        # Time badge if present
-        if time_badge:
-            badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(10.8), Inches(0.3), Inches(1.8), Inches(0.5))
-            badge.fill.solid()
-            badge.fill.fore_color.rgb = AZUL_PRIMARIO
-            badge.line.color.rgb = DORADO_CARTAGO
-            badge.line.width = Pt(1.5)
-            btf = badge.text_frame
-            btf.margin_top = btf.margin_bottom = btf.margin_left = btf.margin_right = 0
-            bp = btf.paragraphs[0]
-            bp.alignment = PP_ALIGN.CENTER
-            bp.text = time_badge
-            bp.font.size = Pt(12)
-            bp.font.bold = True
-            bp.font.color.rgb = BLANCO
 
     def add_card(slide, left, top, width, height, title, bg_color=BLANCO, border_color=GRIS_BORDE):
         card = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(left), Inches(top), Inches(width), Inches(height))
@@ -181,10 +165,10 @@ def create_presentation():
     p.font.color.rgb = DORADO_CARTAGO
 
     # ==========================================
-    # SLIDE 2: 1. PROBLEMA (1 MINUTO)
+    # SLIDE 2: PLANTEAMIENTO DEL PROBLEMA
     # ==========================================
     s2 = prs.slides.add_slide(blank_layout)
-    add_header(s2, "Problemática de Cartago y Objetivo del Proyecto", "Momento 1 · Planteamiento del Problema", "Tiempo: 1 min")
+    add_header(s2, "Problemática de Cartago y Objetivo del Proyecto", "Planteamiento del Problema")
 
     # Card 1: La Problemática Real
     add_card(s2, 0.8, 1.4, 5.6, 5.5, "1. La Problemática en Cartago, Valle")
@@ -240,10 +224,10 @@ def create_presentation():
     p.font.color.rgb = TEXTO_OSCURO
 
     # ==========================================
-    # SLIDE 3: 2. DATOS Y LIMPIEZA (1 MINUTO)
+    # SLIDE 3: DATOS Y LIMPIEZA
     # ==========================================
     s3 = prs.slides.add_slide(blank_layout)
-    add_header(s3, "Adquisición, Calidad y Preparación de Datos", "Momento 2 · Ingeniería de Datos", "Tiempo: 1 min")
+    add_header(s3, "Adquisición, Calidad y Preparación de Datos", "Ingeniería de Datos")
 
     # Card 1: Dataset y Variables
     add_card(s3, 0.8, 1.4, 5.6, 5.5, "Dataset de Bordados: Muestreo Real en Cartago")
@@ -308,10 +292,10 @@ def create_presentation():
     p.font.color.rgb = TEXTO_OSCURO
 
     # ==========================================
-    # SLIDE 4: 3. MODELO POR DENTRO - PERCEPTRÓN (1.5 MINUTOS)
+    # SLIDE 4: MODELO POR DENTRO - PERCEPTRÓN
     # ==========================================
     s4 = prs.slides.add_slide(blank_layout)
-    add_header(s4, "El Modelo por Dentro: Perceptrón desde Cero con NumPy", "Momento 3 · Fundamento Teórico y Matemático", "Tiempo: 1.5 min")
+    add_header(s4, "El Modelo por Dentro: Perceptrón desde Cero con NumPy", "Fundamento Teórico y Matemático")
 
     # Card 1: Fundamentos y Pesos
     add_card(s4, 0.8, 1.4, 6.0, 5.5, "Mecánica Matemática y Signo de los Pesos")
@@ -367,10 +351,10 @@ def create_presentation():
     p.font.color.rgb = TEXTO_MUTED
 
     # ==========================================
-    # SLIDE 5: 4. RESULTADOS SCIKIT-LEARN (1 MINUTO)
+    # SLIDE 5: RESULTADOS SCIKIT-LEARN
     # ==========================================
     s5 = prs.slides.add_slide(blank_layout)
-    add_header(s5, "Resultados Comparativos con Scikit-Learn y Métricas", "Momento 4 · Experimentación y Evaluación", "Tiempo: 1 min")
+    add_header(s5, "Resultados Comparativos con Scikit-Learn y Métricas", "Experimentación y Evaluación")
 
     # Card 1: Comparativa y Métricas
     add_card(s5, 0.8, 1.4, 6.4, 5.5, "Comparación Rigurosa de Modelos en Pipeline")
@@ -419,10 +403,10 @@ def create_presentation():
         s5.shapes.add_picture(img_reg, Inches(7.7), Inches(4.4), width=Inches(4.6), height=Inches(2.2))
 
     # ==========================================
-    # SLIDE 6: 5. DEMOSTRACIÓN EN VIVO Y PLAN B (1 MINUTO)
+    # SLIDE 6: DEMOSTRACIÓN EN VIVO Y PLAN B
     # ==========================================
     s6 = prs.slides.add_slide(blank_layout)
-    add_header(s6, "Demostración Funcional en Vivo y Plan B Obligatorio", "Momento 5 · Inferencia con usar_modelo.py", "Tiempo: 1 min")
+    add_header(s6, "Demostración Funcional en Vivo y Plan B", "Inferencia con usar_modelo.py")
 
     # Card 1: Explicación del Script
     add_card(s6, 0.8, 1.4, 4.8, 5.5, "Inferencia sin Reentrenamiento")
@@ -465,10 +449,10 @@ def create_presentation():
         s6.shapes.add_picture(img_planb, Inches(6.1), Inches(2.0), width=Inches(6.2), height=Inches(4.6))
 
     # ==========================================
-    # SLIDE 7: 6. CIERRE, LIMITACIONES Y TRABAJO FUTURO (0.5 MINUTO)
+    # SLIDE 7: CIERRE, LIMITACIONES Y TRABAJO FUTURO
     # ==========================================
     s7 = prs.slides.add_slide(blank_layout)
-    add_header(s7, "Conclusiones, Limitaciones y Trabajo Futuro", "Momento 6 · Cierre y Prospectiva", "Tiempo: 0.5 min")
+    add_header(s7, "Conclusiones, Limitaciones y Trabajo Futuro", "Cierre y Prospectiva")
 
     # Card 1: Limitaciones Actuales
     add_card(s7, 0.8, 1.4, 5.6, 5.5, "Limitaciones del Sistema Actual")
@@ -569,7 +553,7 @@ def create_presentation():
 
     p = tf8.add_paragraph()
     p.alignment = PP_ALIGN.CENTER
-    p.text = "Sesión de Preguntas y Sustentación Individual (2 minutos)"
+    p.text = "Sesión de Preguntas y Sustentación Individual"
     p.font.size = Pt(22)
     p.font.bold = True
     p.font.color.rgb = BLANCO
