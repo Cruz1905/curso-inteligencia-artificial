@@ -160,7 +160,28 @@ exit
 
 ---
 
-## 7. Próximos Pasos (Sustentación Presencial e Informe APA)
+## 7. Entregables Finales y Documentación Oficial (Tercer Corte) 📄🎓
 
-- **Informe Escrito Final:** Redacción del documento formal bajo normas APA con marco teórico, metodología, análisis de resultados y discusión del impacto socioeconómico en los talleres de bordados de Cartago.
-- **Diapositivas y Demostración:** Preparación de la presentación ejecutiva apoyada en el script `usar_modelo.py` para la sustentación presencial de noviembre.
+En estricto cumplimiento de los lineamientos del Proyecto Final de la asignatura:
+
+1. **Informe Final en Normas APA 7ma Edición (PDF):**
+   - [`Informe_Final_Grupo02_BordadosCartago.pdf`](Informe_Final_Grupo02_BordadosCartago.pdf) (y copia en [`docs/Informe_Final_Grupo02_BordadosCartago.pdf`](docs/Informe_Final_Grupo02_BordadosCartago.pdf)).
+   - **Formato:** Times New Roman 12 pt, interlineado doble (2.0), márgenes de 2.54 cm, sangría de 1.27 cm, numeración superior derecha, tablas y figuras bajo normativa APA 7, 8 referencias académicas rigurosas y Apéndice de declaración de uso de IA generativa (Sección 3.5).
+   - **Extensión:** 22 páginas en total (17 páginas de contenido neto de investigación, entre el rango exigido de 12 a 20 páginas).
+
+2. **Presentación para Sustentación Presencial (PPTX y PDF):**
+   - [`Presentacion_Proyecto_Final_Grupo02_BordadosCartago.pdf`](Presentacion_Proyecto_Final_Grupo02_BordadosCartago.pdf)
+   - [`Presentacion_Proyecto_Final_Grupo02_BordadosCartago.pptx`](Presentacion_Proyecto_Final_Grupo02_BordadosCartago.pptx)
+   - **Estructura cronometrada (6 minutos de exposición + 2 minutos de preguntas):**
+     - Diapositiva 1: Portada institucional COTECNOVA e integrantes del Grupo 02.
+     - Diapositiva 2: Momento 1 · Planteamiento del problema en Cartago, beneficiarios y objetivo (1 min).
+     - Diapositiva 3: Momento 2 · Ingeniería de datos, calidad, imputación y división anti-fuga (1 min).
+     - Diapositiva 4: Momento 3 · Modelo por dentro: Perceptrón desde cero en NumPy y frontera de decisión (1.5 min).
+     - Diapositiva 5: Momento 4 · Modelos Scikit-Learn (Random Forest, Ridge Regression) y métricas F1/MAE (1 min).
+     - Diapositiva 6: Momento 5 · Demostración en vivo (`usar_modelo.py`) y **Plan B obligatorio** con captura de terminal integrada (1 min).
+     - Diapositiva 7: Momento 6 · Cierre, limitaciones del alcance y trabajo futuro (0.5 min).
+     - Diapositiva 8: Ronda de preguntas y enlace al repositorio de GitHub.
+
+3. **Demostración y Plan B:**
+   - Evidencia gráfica de respaldo: [`captura_plan_b_terminal.png`](captura_plan_b_terminal.png).
+   - Inferencia en milisegundos con modelos serializados (`.joblib`) listos para ejecutarse en vivo desde el contenedor Docker.
