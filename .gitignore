@@ -62,3 +62,7 @@ venv.bak/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Documentos personales de estudio y notas privadas
+*.docx
+generar_guia_word.py
